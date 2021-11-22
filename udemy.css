@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=muli&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+/***********************************
+Body: the display flex helps the pix to move,
+justify content and align item helps the pix
+to stay at the middle
+************************************/
+body {
+    background-color: orangered;
+    font-family: 'muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    }
+
+.container {
+        display: flex;
+        width: 90vw;
+    }
+
+.panel {
+        background-size: auto 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 80vh;
+        border-radius: 50px;
+        color: black;
+        cursor: pointer;
+        flex: 1;
+        margin: 10px;
+        position: relative;
+        transition: flex 0.7s ease-in;
+    }
+/************************************************
+panel h3: the position has to be absolute with 
+respect to the position of the pix which contains it
+the "bottom" and the "left" go together 
+*************************************************/
+.panel h3 {
+        font-size: 24px;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        margin: 0;
+        opacity: 0;
+    }
+/*************************************************
+the flex tells the pix how far to stretch
+**************************************************/
+.panel.active {
+        border-radius: 25px;
+        flex: 5;
+    }
+.panel.active #sq {
+        width: 300px;
+}
+/*************************************************
+the transition here helps the h3 content to be slow 
+in appearance so that before it appears, the flex
+would have finished. so it takes 0.4s to fully appear
+**************************************************/
+.panel.active h3 {
+        opacity: 1;
+        transition: opacity 0.3s ease-in 0.4s;
+        color: whitesmoke;
+
+    }
+/*************************************************
+this helps the page to adjust once the width of the 
+whole web page is less than 480px. less than that,
+pix 4 and 5 disappears.
+**************************************************/
+@media (max-width: 480px){
+        .container{
+            width: 100vw;
+        }
+        .panel:nth-of-type(4),
+        .panel:nth-of-type(5) {
+            display: none;
+        }
+    }
